@@ -1,0 +1,17 @@
+mean_fit_time;mean_score_time;mean_test_score;mean_train_score;param_models;param_tfidf__analyzer;param_tfidf__decode_error;param_tfidf__lowercase;param_tfidf__max_df;param_tfidf__min_df;param_tfidf__ngram_range;param_tfidf__norm;param_tfidf__smooth_idf;param_tfidf__sublinear_tf;param_tfidf__use_idf;params;rank_test_score;split0_test_score;split0_train_score;split1_test_score;split1_train_score;split2_test_score;split2_train_score;split3_test_score;split3_train_score;split4_test_score;split4_train_score;std_fit_time;std_score_time;std_test_score;std_train_score
+17.705717468261717;5.975784969329834;0.6073623674002455;0.6122524193389406;"SGDClassifier(alpha=0.0001, average=False, class_weight=None, epsilon=0.1,
+       eta0=0.0, fit_intercept=True, l1_ratio=0.15,
+       learning_rate='optimal', loss='hinge', n_iter=5, n_jobs=1,
+       penalty='l2', power_t=0.5, random_state=None, shuffle=True,
+       verbose=0, warm_start=False)";char;ignore;False;0.873684210526;3;(1, 1);;False;False;False;"{'tfidf__max_df': 0.87368421052631584, 'tfidf__use_idf': False, 'tfidf__sublinear_tf': False, 'tfidf__analyzer': 'char', 'tfidf__decode_error': 'ignore', 'tfidf__min_df': 3, 'tfidf__ngram_range': (1, 1), 'models': SGDClassifier(alpha=0.0001, average=False, class_weight=None, epsilon=0.1,
+       eta0=0.0, fit_intercept=True, l1_ratio=0.15,
+       learning_rate='optimal', loss='hinge', n_iter=5, n_jobs=1,
+       penalty='l2', power_t=0.5, random_state=None, shuffle=True,
+       verbose=0, warm_start=False), 'tfidf__smooth_idf': False, 'tfidf__lowercase': False, 'tfidf__norm': None}";2;0.642595909576997;0.6452974409691757;0.6140073100380667;0.6088096896388667;0.5922413336313839;0.6399240743549578;0.6136664344287516;0.5973857044255514;0.5742997453107948;0.5698451873061513;0.2974072903197544;0.06464938863973545;0.023009145873475002;0.02788884678381223
+9.433692502975465;2.085879421234131;0.7849320698273632;0.7899160905413938;"LogisticRegression(C=0.0001, class_weight=None, dual=False,
+          fit_intercept=True, intercept_scaling=1, max_iter=100,
+          multi_class='ovr', n_jobs=1, penalty='l2', random_state=None,
+          solver='liblinear', tol=0.0001, verbose=0, warm_start=False)";word;ignore;True;0.947368421053;2;(2, 1);l1;True;True;True;"{'tfidf__max_df': 0.94736842105263164, 'tfidf__use_idf': True, 'tfidf__sublinear_tf': True, 'tfidf__analyzer': 'word', 'tfidf__decode_error': 'ignore', 'tfidf__min_df': 2, 'tfidf__ngram_range': (2, 1), 'models': LogisticRegression(C=0.0001, class_weight=None, dual=False,
+          fit_intercept=True, intercept_scaling=1, max_iter=100,
+          multi_class='ovr', n_jobs=1, penalty='l2', random_state=None,
+          solver='liblinear', tol=0.0001, verbose=0, warm_start=False), 'tfidf__smooth_idf': True, 'tfidf__lowercase': True, 'tfidf__norm': 'l1'}";1;0.7940161122194531;0.7910024420418651;0.7908476698902099;0.7885916268787069;0.7765522693371815;0.7917718066486699;0.771116765871219;0.7906145648978016;0.7921272471774543;0.7876000122399252;0.27747964382322404;0.23238498062943252;0.009277589079965285;0.0015639776834885642
