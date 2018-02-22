@@ -1,3 +1,8 @@
 data/*
+preprocess/
 .kaggle_cli/
 .ipynb_checkpoints/
+preprocess_qqgeogr/
+Quora_wrosinski/
+
+
