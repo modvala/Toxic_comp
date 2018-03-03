@@ -107,7 +107,7 @@ def clean_part2(df2):
 def words(text): return re.findall(r'\w+', text.lower())
 
 def P(word): 
-    return - WORDS[word] 
+    return - WORDS.get(word, 0) 
 
 def correction(word): 
     try:
