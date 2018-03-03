@@ -140,12 +140,12 @@ def clean(comment):
     comment=comment.lower()
     comment=re.sub("\\n","",comment)
     #comment = myDate.sub(' xxDATExx ', comment)
-    comment=re.sub("\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}","",comment)
-    comment=re.sub("\[\[.*\]","",comment)
+    #comment=re.sub("\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}","",comment)
+    #comment=re.sub("\[\[.*\]","",comment)
     words=tokenizer.tokenize(comment)
     words=[APPO[word] if word in APPO else word for word in words]
     words=[lem.lemmatize(word, "v") for word in words]
-    words = [w for w in words if not w in eng_stopwords]   
+    #words = [w for w in words if not w in eng_stopwords]   
     clean_sent=" ".join(words)
     
     return(clean_sent)
