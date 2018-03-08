@@ -88,14 +88,14 @@ def clean(comment):
         "he'd" : "he would",
         "he'll" : "he will",
         "he's" : "he is",
-        "i'd" : "I would",
-        "i'd" : "I had",
-        "i'll" : "I will",
-        "i'm" : "I am",
-        "isn't" : "is not",
-        "it's" : "it is",
-        "it'll":"it will",
-        "i've" : "I have",
+        "I'd" : "I would",
+        "I'd" : "I had",
+        "I'll" : "I will",
+        "I'm" : "I am",
+        "Isn't" : "is not",
+        "It's" : "it is",
+        "It'll":"it will",
+        "I've" : "I have",
         "let's" : "let us",
         "mightn't" : "might not",
         "mustn't" : "must not",
@@ -137,14 +137,14 @@ def clean(comment):
         "tryin'":"trying"
 }
     
-    comment=comment.lower()
-    comment=re.sub("\\n","",comment)
+    #comment=comment.lower()
+    comment=re.sub("\\n"," ",comment)
     #comment = myDate.sub(' xxDATExx ', comment)
     #comment=re.sub("\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}","",comment)
     #comment=re.sub("\[\[.*\]","",comment)
     words=tokenizer.tokenize(comment)
     words=[APPO[word] if word in APPO else word for word in words]
-    words=[lem.lemmatize(word, "v") for word in words]
+    #words=[lem.lemmatize(word, "v") for word in words]
     #words = [w for w in words if not w in eng_stopwords]   
     clean_sent=" ".join(words)
     
