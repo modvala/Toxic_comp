@@ -19,13 +19,25 @@ def hashtag(text):
     if hashtag_body.isupper():
         result = " {} ".format(hashtag_body.lower())
     else:
-        result = " ".join(["<hashtag>"] + re.split(r"(?=[A-Z])", hashtag_body, flags=FLAGS))
+        result = " ".join([" <hashtag> "] + re.split(r"(?=[A-Z])", hashtag_body, flags=FLAGS))
     return result
 
 def allcaps(text):
     text = text.group()
-    return text.lower() + " <allcaps>"
+    return text.lower() + " <allcaps> "
+ 
+def text_in_line(text): 
+    text = text.group()
+    return " <in_line> "
 
+def annot(text): 
+    text = text.group()
+    return re.sub(r'("|\'){1,}', '', text, flags=FLAGS)+ " <annot> "
+
+def level(text): 
+    text = text.group()
+    return " <level> "
+ 
 
 def tokenize(text):
     # Different regex parts for smiley faces
@@ -36,22 +48,26 @@ def tokenize(text):
     def re_sub(pattern, repl):
         return re.sub(pattern, repl, text, flags=FLAGS)
 
-    text = re_sub(r"https?:\/\/\S+\b|www\.(\w+\.)+\S*", "<url>")
-    text = re_sub(r"@\w+", "<user>")
-    text = re_sub(r"{}{}[)dD]+|[)dD]+{}{}".format(eyes, nose, nose, eyes), "<smile>")
-    text = re_sub(r"{}{}p+".format(eyes, nose), "<lolface>")
-    text = re_sub(r"{}{}\(+|\)+{}{}".format(eyes, nose, nose, eyes), "<sadface>")
-    text = re_sub(r"{}{}[\/|l*]".format(eyes, nose), "<neutralface>")
+    text = re_sub(r"https?:\/\/\S+\b|www\.(\w+\.)+\S*", " <url> ")
+    text=re.sub("\\n"," ", text)
+    text = re_sub(r"@\w+", " <user> ")
+    text = re_sub(r"{}{}[)dD]+|[)dD]+{}{}".format(eyes, nose, nose, eyes), " <smile> ")
+    text = re_sub(r"{}{}p+".format(eyes, nose), " <lolface> ")
+    text = re_sub(r"{}{}\(+|\)+{}{}".format(eyes, nose, nose, eyes), " <sadface> ")
+    text = re_sub(r"{}{}[\/|l*]".format(eyes, nose), " <neutralface> ")
     text = re_sub(r"/"," / ")
-    text = re_sub(r"<3","<heart>")
-    text = re_sub(r"[-+]?[.\d]*[\d]+[:,.\d]*", "<number>")
+    text = re_sub(r"<3"," <heart> ")
+    text = re_sub(r"[-+]?[.\d]*[\d]+[:,.\d]*", " <number> ")
     text = re_sub(r"#\S+", hashtag)
-    text = re_sub(r"([!?.]){2,}", r"\1 <repeat>")
-    text = re_sub(r"\b(\S*?)(.)\2{2,}\b", r"\1\2 <elong>")
+    text = re_sub(r"([!?.]){2,}", r"\1 <repeat> ")
+    text = re_sub(r"\b(\S*?)(.)\2{2,}\b", r"\1\2 <elong> ")
 
     ## -- I just don't understand why the Ruby script adds <allcaps> to everything so I limited the selection.
     # text = re_sub(r"([^a-z0-9()<>'`\-]){2,}", allcaps)
     text = re_sub(r"([A-Z]){2,}", allcaps)
+    text = re_sub(r"==", text_in_line)
+    text = re_sub(r'("|\'){1,}\w+("|\'){1,}', annot)
+    text = re_sub(r"(:){1,}", level)
 
     return text.lower()
 
